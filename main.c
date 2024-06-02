@@ -1,13 +1,38 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define LED_PIN PB5
+void setup() {
+    DDRD  = 0xFF; // Set PORTD as output for LED array
+}
+
+
+void display_number(uint8_t number) {
+    PORTD = number; 
+}
+
+void loop() {
+    static uint8_t a = 0, b = 1, next;
+
+     next = a + b;
+    if (next < a) {
+        next = 0;
+        a = 0;
+        b = 1;
+    } else {
+        a = b;
+        b = next;
+    }
+
+    display_number(next);
+
+    _delay_ms(1500);  
+
+}
 
 int main(void) {
-    DDRB |= (1 << LED_PIN);
-
+    setup();
     while (1) {
-        PORTB ^= (1 << LED_PIN); 
-        _delay_ms(1000);     
+        loop();
     }
+    return 0;
 }
