@@ -14,3 +14,6 @@ Your final submission should be a git repo with each task solution having its ow
 branch.
 Task 1
 Blink an LED on an Arduino board.
+
+
+These tasks were tested on the Both TinkerCAD and wokwi due to the unreliability of both of these simulation softwares and also that I didnt have access to any Arduinos at present.
